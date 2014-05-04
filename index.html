@@ -333,17 +333,21 @@
             <li><b>Base fields</b> (former "entity properties")
                 <ul>
                     <li>defined in <b>code</b>: <code>MyEntityType::baseFieldDefinitions()</code></li>
-                    <li>better for business logic</li>
                 </ul>
             </li>
             <li><b>Bundle fields</b> (variations of base fields per bundle)
                 <ul>
                     <li>defined in <b>code</b>: <code>MyEntityType::bundleFieldDefinitions()</code></li>
                     <li>e.g. node title</li>
-                    <li>+ all configurable fields (former "fields") - field.module</li>
+                </ul>
+            </li>
+            <li><b>Configurable fields</b> (former "fields") - field.module
+                <ul>
+                    <li>defined in <b>config</b> through an admin UI</li>
                 </ul>
             </li>
         </ul>
+        <p><b>Properties</b>: what you find inside a FieldItem ('value', 'format', 'target_id'...)</p>
         <span class="next"><b>Properties</b>: what you find inside a FieldItem ('value', 'format', 'target_id'...)</span>
     </div></section>
     <!-- Architecture -->
@@ -360,12 +364,12 @@
     </div></section>
     <!-- FieldDefinitionInterface -->
     <section class="slide"><div>
-        <h2>Unified FieldDefinitionInterface</h2>
-        <p><b>Field definition</b>: name, type, label, cardinality, settings, default value...</P>
+        <h2>Unified FieldStorageDefinitionInterface</h2>
+        <p><b>Field definition</b>: name, type, label, cardinality, settings, description...</P>
         <ul>
             <li class="next" style="margin-bottom: 1em;"><b>D7</b>: $field / $instance arrays<br>
                 <code>$field['type'], $instance['settings']['max']</code></li>
-            <li class="next"><b>D8</b>: FieldDefinitionInterface<br>
+            <li class="next"><b>D8</b>: FieldStorageDefinitionInterface<br>
                 <code>$definition->getType(), $definition->getSetting('max')...</code><br>
                 <ul class="next">
                     <li>Autocompletion, documentation...</li>
@@ -376,8 +380,8 @@
     </div></section>
     <!-- FieldDefinitionInterface code-->
     <section class="slide"><div>
-        <h2>Unified FieldDefinitionInterface</h2>
-        <pre style="max-height: 45%" data-src="source/FieldDefinitionInterface.php"></pre>
+        <h2>Unified FieldStorageDefinitionInterface</h2>
+        <pre style="max-height: 45%;" data-src="source/FieldDefinitionInterface.php"></pre>
         <span class="next">
         Implementations:
             <ul style="margin-left: 1em">
@@ -390,18 +394,17 @@
     <section class="slide"><div>
         <h2>Grabbing field definitions</h2>
         <pre class="drupal-7" style="margin-bottom: 1em"><code>field_info_fields()
-            field_info_field($field_name)
-            field_info_instances($entity_type, $bundle)
-            field_info_instances($entity_type, $bundle, $field_name)</code></pre>
+field_info_field($field_name)
+field_info_instances($entity_type, $bundle)
+field_info_instances($entity_type, $bundle, $field_name)</code></pre>
         <div class="next">
-            <pre class="drupal-8"><code>$entity_manager->getFieldDefinitions($entity_type, $bundle)
-                $entity_manager->getFieldDefinition($entity_type, $bundle, $field_name)</code><code class="next">
-                // On an entity:
-                $entity->getFieldDefinitions()
-                $entity->getFieldDefinition($field_name)
-                $entity->hasField($field_name)</code><code class="next">
-                // On items:
-                $item->getFieldDefinition(), $items->getFieldDefinition()</code></pre>
+            <pre class="drupal-8"><code>$entity_manager->getFieldDefinitions($entity_type, $bundle)</code><code class="next">
+// On an entity:
+$entity->getFieldDefinitions()
+$entity->getFieldDefinition($field_name)
+$entity->hasField($field_name)</code><code class="next">
+// On items:
+$item->getFieldDefinition(), $items->getFieldDefinition()</code></pre>
         </div>
     </div></section>
 
@@ -771,6 +774,51 @@ $options = $display->getComponent('body');
         </ul>
     </div></section>
 
+    <!-- Field types -->
+    <section class="slide shout"><div>
+        <h2>Field types</h2>
+    </div></section>
+    <!-- D7 field type hooks-->
+    <section class="slide"><div>
+        <h2>D7: field type "hooks"</h2>
+        <pre data-src="source/field_type_d7.php"></pre>
+    </div></section>
+    <!-- FieldType plugins -->
+    <section class="slide"><div id="FieldTypePlugins">
+        <h2>FieldType plugin type</h2>
+        <ul>
+            <li>Discovery folder: <code>Plugin/Field/FieldType</code></li>
+            <li>Annotation: <code>FieldType</code><br></li>
+        </ul>
+        <img class="center border" src="pictures/plugin_folder.png">
+        <ul class="next">
+            <li>Interface: <code>FieldItemInterface</code></li>
+        </ul>
+        <style>
+            #FieldTypePlugins img {
+                position: absolute;
+                right: 55px;
+                top: 155px;
+            }
+        </style>
+    </div></section>
+    <!-- FieldItemInterface
+    <section class="slide"><div>
+        <h2>FieldItemInterface <span style="font-size: .7em;">At some point during 8.x</span></h2>
+        <pre data-src="source/FieldItemInterface.php"></pre>
+        <pre class="next" data-src="source/ConfigFieldItemInterface.php" style="margin-top: 0px;"></pre>
+    </div></section>-->
+    <!-- FieldItemInterface -->
+    <section class="slide"><div>
+        <h2>FieldItemInterface <span style="font-size: .7em;">Now in 8.x !</span></h2>
+        <pre style="max-height: 75%;" data-src="source/FieldItemInterface_2.php"></pre>
+    </div></section>
+    <!-- LinkItem-->
+    <section class="slide nomargins codeonly"><div>
+        <h2><span style="color:#bbb">/core/modules/</span>link<span style="color:#bbb">/lib/Drupal/link/</span><span style="color:#88f">Plugin/Field/FieldType</span>/LinkItem.php</h2>
+        <pre data-src="source/LinkItem.php"></pre>
+    </div></section>
+
     <!-- Formatters -->
     <section class="slide shout"><div>
         <h2>Formatters</h2>
@@ -807,25 +855,25 @@ $options = $display->getComponent('body');
             </li>
         </ul>
     </div></section>
-    <!-- Number formatter -->
+<!--    &lt;!&ndash; Number formatter &ndash;&gt;
     <section class="slide nomargins codeonly"><div>
         <h2><span style="color:#bbb">/core/modules/</span>number<span style="color:#bbb">/lib/Drupal/number/</span><span style="color:#88f">Plugin/Field/FieldFormatter</span>/NumberUnformattedFormatter.php</h2>
         <pre data-src="source/NumberUnformattedFormatter.php"></pre>
     </div></section>
-    <!-- @FieldFormatter annotation -->
+    &lt;!&ndash; @FieldFormatter annotation &ndash;&gt;
     <section class="slide nomargins codeonly"><div>
         <h2>/core/lib/Drupal/Core/Field/Annotation/FieldFormatter.php</h2>
         <pre data-src="source/FieldFormatter.php"></pre>
     </div></section>
-    <!-- Link formatter -->
+    &lt;!&ndash; Link formatter &ndash;&gt;
     <section class="slide nomargins codeonly"><div>
         <h2><span style="color:#bbb">/core/modules/</span>link<span style="color:#bbb">/lib/Drupal/link/</span><span style="color:#88f">Plugin/Field/FieldFormatter</span>/LinkFormatter.php</h2>
         <pre data-src="source/LinkFormatter.php"></pre>
-    </div></section>
+    </div></section>-->
     <!-- NumberFormatter diagram -->
     <section class="slide wide"><div>
         <h2>Inheritance example</h2>
-        <img class="border center" src="pictures/number_formatters_diagram.png" style="-webkit-transform: scale(1.5); -webkit-transform-origin: center top;"/>
+        <img class="border center" src="pictures/diagram.png" style="-webkit-transform: scale(0.78); -webkit-transform-origin: center top;"/>
     </div></section>
     <!-- working in formatters -->
     <section class="slide"><div>
@@ -834,7 +882,7 @@ $options = $display->getComponent('body');
             <li>Access the configuration of the formatter:<br>
                 <code class="indent">$this->getSetting('foo'), $this->getSettings()</code></li>
             <li class="next">Access the definition of the field:<br>
-                <code class="indent">$this->fieldDefinition->getFieldType()</code>
+                <code class="indent">$this->fieldDefinition->getType()</code>
                 <code class="indent">$this->getFieldSetting('foo'), $this->getFieldSettings()</code></li>
             <li class="next">Manipulate the FieldItemList and FieldItem objects:<br/>
                 <code class="indent">$items->getEntity(), $items->getLangcode()</code>
@@ -858,11 +906,11 @@ $options = $display->getComponent('body');
             <li>WidgetBase class</li>
         </ul>
     </div></section>
-    <!-- Email widget-->
+<!--    &lt;!&ndash; Email widget&ndash;&gt;
     <section class="slide nomargins codeonly"><div>
         <h2><span style="color:#bbb">/core/modules/</span>email<span style="color:#bbb">/lib/Drupal/email/</span><span style="color:#88f">Plugin/Field/FieldWidget</span>/EmailDefaultWidget.php</h2>
         <pre data-src="source/EmailDefaultWidget.php"></pre>
-    </div></section>
+    </div></section>-->
     <!-- working in widgets -->
     <section class="slide"><div>
         <h2>Working in widgets</h2>
@@ -888,63 +936,18 @@ $options = $display->getComponent('body');
         </ul>
     </div></section>
 
-    <!-- @FieldFormatter annotation -->
+    <!-- BaseFields -->
     <section class="slide nomargins codeonly"><div>
         <h2>/core/modules/node/lib/Drupal/node/Entity/Node.php</h2>
         <pre data-src="source/BaseFields.php"></pre>
     </div></section>
 
-    <!-- Field types -->
-    <section class="slide shout"><div>
-        <h2>Field types</h2>
-    </div></section>
-    <!-- D7 field type hooks-->
-    <section class="slide"><div>
-        <h2>D7: field type "hooks"</h2>
-        <pre data-src="source/field_type_d7.php"></pre>
-    </div></section>
-    <!-- FieldType plugins -->
-    <section class="slide"><div id="FieldTypePlugins">
-        <h2>FieldType plugin type</h2>
-        <ul>
-            <li>Discovery folder: <code>Plugin/Field/FieldType</code></li>
-            <li>Annotation: <code>FieldType</code><br></li>
-        </ul>
-        <img class="center border" src="pictures/plugin_folder.png">
-        <ul class="next">
-            <li>Interface: <code>FieldItemInterface</code></li>
-        </ul>
-        <style>
-            #FieldTypePlugins img {
-                position: absolute;
-                right: 55px;
-                top: 155px;
-            }
-        </style>
-    </div></section>
-    <!-- FieldItemInterface -->
-    <section class="slide"><div>
-        <h2>FieldItemInterface <span style="font-size: .7em;">At some point during 8.x</span></h2>
-        <pre data-src="source/FieldItemInterface.php"></pre>
-        <pre class="next" data-src="source/ConfigFieldItemInterface.php" style="margin-top: 0px;"></pre>
-    </div></section>
-    <!-- FieldItemInterface -->
-    <section class="slide"><div>
-        <h2>FieldItemInterface <span style="font-size: .7em;">Now in 8.x !</span></h2>
-        <pre data-src="source/FieldItemInterface_2.php"></pre>
-    </div></section>
-    <!-- LinkItem-->
-    <section class="slide nomargins codeonly"><div>
-        <h2><span style="color:#bbb">/core/modules/</span>link<span style="color:#bbb">/lib/Drupal/link/</span><span style="color:#88f">Plugin/Field/FieldType</span>/LinkItem.php</h2>
-        <pre data-src="source/LinkItem.php"></pre>
-    </div></section>
-
-    <!-- Are we there yet ? -->
+<!--     Are we there yet ?
     <section class="slide cover h"><div>
         <img src="pictures/jedi-slide.jpg"/>
-    </div></section>
+    </div></section>-->
 
-    <section class="slide">
+    <!--<section class="slide">
         <div>
         <h2>API changes done at Drupal Dev Days</h2>
             <ul>
@@ -952,17 +955,17 @@ $options = $display->getComponent('body');
                 <li>Removed field_attach_form().</li>
             </ul>
         </div>
-    </section>
+    </section>-->
 
     <section class="slide">
         <div>
-            <h2>Api changes / beta targets coming up (maybe during dev days)</h2>
+            <h2>Api changes / beta targets coming up</h2>
             <ul>
                 <li>Content translation sync settings to own storage</li>
                 <li class="next">A unified repository of field definitions</li>
-                <li class="next">Remove field_info_*()</li>
-                <li class="next">Apply formatters and widgets to * fields</li>
-                <li class="next">Make delete fields work with config synchronization</li>
+                <li class="next"><del>Remove field_info_*()</del></li>
+                <li class="next">Apply formatters and widgets to * fields (Partially)</li>
+                <li class="next"><del>Make delete fields work with config synchronization</del></li>
             </ul>
         </div>
     </section>
@@ -970,15 +973,14 @@ $options = $display->getComponent('body');
     <section class="slide"><div>
         <h2>Get involved</h2>
         <ul>
-
-        <li>
-            [META] Complete the Entity Field API<br />
-            http://drupal.org/node/2095603
+            <li>
+                [META] Complete the Entity Field API<br />
+                http://drupal.org/node/2095603
             </li>
-        <li>http://entity.worldempire.ch/</li>
-        <li>Weekly IRC meetings: #drupal-entity - Thursday, 18:00 CET</li>
+            <li>http://entity.worldempire.ch/</li>
+            <li>Weekly IRC meetings: #drupal-entity - Thursday, 18:00 CET</li>
         </ul>
-        </div>
+    </div>
     </section>
 
     <section class="slide shout"><div>

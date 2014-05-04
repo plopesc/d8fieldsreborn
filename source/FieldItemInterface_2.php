@@ -1,8 +1,11 @@
 interface FieldItemInterface {
-  public static function schema(FieldDefinitionInterface $field);
-  public function getPropertyDefinitions();
-  public function getValidationConstraints();
+  public static function schema(FieldDefinitionInterface $field_definition);
+  public static function propertyDefinitions();
+  public function getConstraints();
   public function isEmpty();
+
+  public static function defaultSettings();
+  public static function defaultInstanceSettings();
 
   public function settingsForm(array $form, array &$form_state, $has_data);
   public function instanceSettingsForm(array $form, array &$form_state);
