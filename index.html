@@ -1,0 +1,892 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<title>D8: Fields reborn</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=792, user-scalable=no">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<link rel="stylesheet" href="shower/themes/ribbon/styles/screen.css">
+    <link rel="stylesheet" href="prism.css">
+    <link rel="stylesheet" href="custom.css">
+</head>
+<body class="list language-php">
+	<header class="caption">
+		<h1>D8: Fields reborn</h1>
+		<p>Pablo López - plopesc</p>
+    </header>
+
+    <!-- Cover -->
+	<section class="slide cover shadow h" id="Cover"><div>
+		<h2>D8: Fields reborn</h2>
+		<p style="margin-top: 185px">Pablo López - @plopesc</p>
+        <p>Drupalcamp Spain<br>
+            Valencia, May 2014
+        </p>
+        <img src="pictures/cover.jpg">
+		<style>
+			#Cover h2 {
+                color: white;
+				margin: 0;
+				text-align: center;
+				font-size: 4em;
+            }
+			#Cover p {
+                color: #eee;
+                margin-top: 20px;
+				text-align: center;
+                font-weight: bold;
+				font-size: 1.1em;
+                line-height: 1.2em;
+            }
+		</style>
+	</div></section>
+
+    <!-- Related sessions -->
+    <section class="slide"><div>
+        <h2>Related sessions</h2>
+        <p>
+            <b><a href="http://2014.drupalcamp.es/lets-do-it-with-drupal-8">Let's do it with Drupal 8</a></b><br>
+            Rubén Teijeiro<br>
+            Was earlier today :)
+        </p>
+        <p>
+            <b><a href="http://2014.drupalcamp.es/modes-and-formatters">Modes and formatters</a></b><br>
+            Jesús Sánchez Balsera<br>
+            Sunday 10am
+        </p>
+    </div></section>
+
+    <!-- Broken record / 4th time and D8 is not even out yet -->
+    <section class="slide cover shadow h v shout">
+      <img src="pictures/repeating.gif">
+        <h2 style="color: #fff">Broken record</h2>
+        <style>
+            #SiteBuilding img {
+                filter: blur(2px);
+                -webkit-filter: blur(2px);
+                -moz-filter: blur(2px);
+                -o-filter: blur(2px);
+                -ms-filter: blur(2px);
+            }
+        </style>
+    </section>
+
+    <!-- Amazing changes -->
+    <section class="slide"><div>
+        <h2>Amazing changes</h2>
+        <ul>
+            <li>More power for the site builders</li>
+            <li class="next">Fields & instances moved to config entities</li>
+            <li class="next">Formatters, Widgets and Field types are plugins</li>
+            <li class="next">Formatters & widgets work on all fields</li>
+            <li class="next">Moved from field to entity storage</li>
+            <li class="next">Field & Entity API are now one happy big family</li>
+        </ul>
+    </div></section>
+
+    <!-- Are we there yet ? -->
+    <section class="slide cover h"><div>
+        <img src="pictures/there.jpg"/>
+    </div></section>
+
+    <!-- Beach -->
+    <section class="slide cover h"><div>
+        <img src="pictures/beach.jpg"/>
+    </div></section>
+
+    <!-- Rewrite -->
+    <section class="slide cover h"><div>
+        <img src="pictures/rewrite_all_the_things.jpg"/>
+    </div></section>
+
+    <!-- 3rd time-->
+    <section class="slide shout"><div id="ThirdTime">
+        <h2 style="font-size: 2em">... for the 3rd time</h2>
+        <img class="next" src="pictures/sisyphus.gif" width="128" height="108"/>
+        <style>
+            #ThirdTime img {
+                position: absolute;
+                margin-top: 300px;
+                margin-left: 330px;
+            }
+        </style>
+    </div></section>
+
+    <!-- Shoutout -->
+    <section class="slide shout"><div>
+        <h2><span style="font-size: 50%">
+            yched, amateescu, swentel<br/>
+            <span class="next">fago, Berdir, plach,</span><br/>
+            <span class="next">effulgentsia, andypost...</span>
+        </span></h2>
+    </div></section>
+
+    <!-- Site building features -->
+    <section class="slide cover h v shout"><div id="SiteBuilding">
+        <img src="pictures/site_building.png"/>
+        <h2>Site building features</h2>
+        <style>
+            #SiteBuilding img {
+                filter: blur(2px);
+                -webkit-filter: blur(2px);
+                -moz-filter: blur(2px);
+                -o-filter: blur(2px);
+                -ms-filter: blur(2px);
+            }
+        </style>
+    </div></section>
+
+    <!-- New field types -->
+  	<section class="slide"><div>
+		<h2>New field types</h2>
+        <ul>
+            <li>More power for site builders out of the box</li>
+            <li class="next">Slowly moving towards "Snowman"</li>
+            <li class="next">Not always full ports of the corresponding D7 modules</li>
+            <li class="next">Sometimes they are not even modules anymore (email, number, more to come)</li>
+        </ul>
+	</div></section>
+
+    <!-- Entity ref -->
+    <section class="slide"><div id="EntityRef">
+        <h2>Entity reference</h2>
+        <img class="border" src="pictures/entity_ref_0.png"/>
+        <img class="border" src="pictures/entity_ref_1.png"/>
+        <p class="note">Fairly complete port of D7 entity_reference.module<br/>
+            Taxo, file, image fields: still separate field types</p>
+        <style>
+            #EntityRef img:nth-of-type(1)  {
+                position: absolute;
+                top: 160px;
+                left: 250px;
+            }
+            #EntityRef img:nth-of-type(2) {
+                position: absolute;
+                top: 225px;
+                left: 465px;
+            }
+            #EntityRef .note {
+                position: absolute;
+                top: 470px;
+            }
+        </style>
+    </div></section>
+
+    <!-- Date -->
+    <section class="slide"><div>
+        <h2>Date / Datetime</h2>
+        <img class="border center" src="pictures/date.png"/>
+        <p class="note">The "repeat" features from D7 stays in contrib</p>
+    </div></section>
+
+    <!-- Link -->
+    <section class="slide"><div>
+        <h2>Link</h2>
+        <img class="border center" src="pictures/link.png"/>
+        <p class="note">Basic version (URL, text)<br/>
+            <del>No support for internal paths (e.g. node/1)</del><br />
+            Now supports internal paths (<a href="https://drupal.org/node/2054011">https://drupal.org/node/2054011</a>)
+
+        </p>
+    </div></section>
+
+    <!-- Email, phone -->
+    <section class="slide"><div>
+        <h2>Email</h2>
+        <ul>
+            <li>Input validation</li>
+            <li>No anti-spam support out of the box</li>
+        </ul>
+        <div class="next">
+            <h2 style="margin-top: 1.5em;">Phone</h2>
+            <ul>
+                <li>HTML5 "tel" input</li>
+                <li>Basic display (optional "tel:" link)</li>
+            </ul>
+        </div>
+    </div></section>
+
+    <!-- In Place Editing -->
+    <section class="slide"><div>
+        <h2>In Place Editing</h2>
+        <img class="border center" src="pictures/ipe.png"/>
+    </div></section>
+    <!-- Fieldable blocks -->
+    <section class="slide"><div>
+        <h2>Fieldable blocks</h2>
+        <img class="border center" src="pictures/fieldable_block.png"/>
+        <p class="note">aka Beans in core</p>
+    </div></section>
+
+    <!-- Form modes -->
+    <section class="slide"><div>
+        <h2>Form modes</h2>
+        <ul>
+            <li>Similar to "view modes", on the form side</li>
+            <li>Build several form variants for your entities:</li>
+                <ul>
+                    <li>User registration / user edit</li>
+                    <li>Creation / edit forms</li>
+                </ul>
+            </li>
+            <li>Fields can now be hidden in forms</li>
+        </ul>
+        <p class="note next">Beware of required fields with no default values...</p>
+    </div></section>
+    <!-- Form modes - UI -->
+    <section class="slide wide"><div>
+        <h2>Form modes UI</h2>
+        <img class="border center" src="pictures/form_modes.png"/>
+    </div></section>
+    <!-- Field UI - field lists -->
+    <section class="slide wide"><div>
+        <h2>Field Overview UI</h2>
+        <img class="border center" src="pictures/field_overview.png"/>
+    </div></section>
+
+    <!-- Field per entity type-->
+    <section class="slide"><div>
+        <h2>Fields are tied to an entity type</h2>
+        <p>A field cannot be "shared" across entity types,<br>
+            only across bundles of a given entity type</p>
+        <div class="next">
+            <b>Consequences:</b>
+            <ul>
+                <li>No need to clutter the field name ('comment_body')<br>
+                    node 'body' != comment 'body'</li>
+                <li class="next">A $field_name alone is not enough:<br>
+                    <code class="indent">$field = field_info_field($entity_type, $name);</code><br>
+                    <code class="indent">&lt;div class="field-name-body field-node--body"></code><br>
+                </li>
+            </ul>
+        </div>
+    </div></section>
+
+    <!-- comment as field -->
+    <!-- APIs -->
+    <section class="slide cover w h"><div>
+        <img src="pictures/comment.jpg"/>
+    </div></section>
+
+    <!-- APIs -->
+    <section class="slide cover shadow w h shout"><div>
+        <img src="pictures/code_2.jpg"/>
+        <h2 style="color: white">APIs !!!</h2>
+        <h3 style="color: #eee">There will be code</h3>
+    </div></section>
+
+    <!-- Unified APIs -->
+    <section class="slide"><div>
+        <h2>Unified APIs and features</h2>
+        <ul>
+            <li class="next">field translation</li>
+            <li class="next">field access</li>
+            <li class="next">constraints / validation</li>
+            <li class="next">output in REST</li>
+            <li class="next">widgets / formatters</li>
+            <li class="next">In Place Editing</li>
+            <li class="next">EntityQuery (EFQ in D7)</li>
+            <li class="next">field cache (= entity cache!)</li>
+        </ul>
+    </div></section>
+
+    <!-- Naming is hard -->
+    <section class="slide nomargins cover shadow h"><div id="NamingIsHard">
+        <h2>Naming is hard...</h2>
+        <img src="pictures/puzzled.png"/>
+        <style>
+            #NamingIsHard h2 {
+                color: white;
+                margin-left: 100px;
+            }
+        </style>
+    </div></section>
+
+    <!-- Everything is a field -->
+    <section class="slide"><div>
+        <h2>Everything is a field</h2>
+    </div></section>
+    <!-- EVERYTHING -->
+    <section class="slide shout"><div>
+        <h2 style="font-size: 1000%">Everything</h2>
+    </div></section>
+    <!-- Everything is a field 2 -->
+    <section class="slide"><div>
+        <h2>Everything in a ContentEntity is a field</h2>
+        <ul>
+            <li><code>$node->title           FieldItemListInterface</code></li>
+            <li><code>$node->body            FieldItemListInterface</code></li>
+            <li><code>$node->field_custom    FieldItemListInterface</code></li>
+        </ul>
+        <div class="next">
+            <b>Drawback</b>: <code>$node->title->value;</code>
+        </div>
+        <div class="next">
+            <b>Mitigation</b>: <code>$node->getTitle();</code>
+        </div>
+    </div></section>
+
+    <!-- Naming -->
+    <section class="slide"><div>
+        <h2>Different kinds of fields...</h2>
+        <ul>
+            <li><b>Base fields</b> (former "entity properties")
+                <ul>
+                    <li>defined in <b>code</b>: <code>MyEntityType::baseFieldDefinitions()</code></li>
+                    <li>better for business logic</li>
+                </ul>
+            </li>
+            <li><b>Bundle fields</b> (variations of base fields per bundle)
+                <ul>
+                    <li>defined in <b>code</b>: <code>MyEntityType::bundleFieldDefinitions()</code></li>
+                    <li>e.g. node title</li>
+                    <li>+ all configurable fields (former "fields") - field.module</li>
+                </ul>
+            </li>
+        </ul>
+        <span class="next"><b>Properties</b>: what you find inside a FieldItem ('value', 'format', 'target_id'...)</span>
+    </div></section>
+    <!-- Architecture -->
+    <section class="slide"><div>
+        <h2>Code architecture</h2>
+        <ul>
+            <li style="margin-bottom: 1em"><code>/core/lib/Drupal/Core/Field</code><br>
+                The Field system, widgets, formatters...<br>
+                baked in the lifecycle of (Content)Entities
+            </li>
+            <li><code>/core/modules/field.module</code><br>
+                Configurable fields</li>
+        </ul>
+    </div></section>
+    <!-- FieldDefinitionInterface -->
+    <section class="slide"><div>
+        <h2>Unified FieldDefinitionInterface</h2>
+        <p><b>Field definition</b>: name, type, label, cardinality, settings, default value...</P>
+        <ul>
+            <li class="next" style="margin-bottom: 1em;"><b>D7</b>: $field / $instance arrays<br>
+                <code>$field['type'], $instance['settings']['max']</code></li>
+            <li class="next"><b>D8</b>: FieldDefinitionInterface<br>
+                <code>$definition->getType(), $definition->getSetting('max')...</code><br>
+                <ul class="next">
+                    <li>Autocompletion, documentation...</li>
+                    <li>$field / $instance are mostly abstracted away</li>
+                </ul>
+            </li>
+        </ul>
+    </div></section>
+    <!-- FieldDefinitionInterface code-->
+    <section class="slide"><div>
+        <h2>Unified FieldDefinitionInterface</h2>
+        <pre style="max-height: 45%" data-src="source/FieldDefinitionInterface.php"></pre>
+        <span class="next">
+        Implementations:
+            <ul style="margin-left: 1em">
+                <li>configurable fields: FieldConfig, FieldInstanceConfig</li>
+                <li class="next">base fields: FieldDefinition</li>
+            </ul>
+        </span>
+    </div></section>
+    <!-- Collecting field definitions -->
+    <section class="slide"><div>
+        <h2>Grabbing field definitions</h2>
+        <pre class="drupal-7" style="margin-bottom: 1em"><code>field_info_fields()
+            field_info_field($field_name)
+            field_info_instances($entity_type, $bundle)
+            field_info_instances($entity_type, $bundle, $field_name)</code></pre>
+        <div class="next">
+            <pre class="drupal-8"><code>$entity_manager->getFieldDefinitions($entity_type, $bundle)
+                $entity_manager->getFieldDefinition($entity_type, $bundle, $field_name)</code><code class="next">
+                // On an entity:
+                $entity->getFieldDefinitions()
+                $entity->getFieldDefinition($field_name)
+                $entity->hasField($field_name)</code><code class="next">
+                // On items:
+                $item->getFieldDefinition(), $items->getFieldDefinition()</code></pre>
+        </div>
+    </div></section>
+
+    <!-- Storage -->
+    <section class="slide"><div>
+        <h2>Field storage</h2>
+        <ul>
+            <li>D7: pluggable "field storage engines", field per field</li>
+            <li class="next">D8: job of the EntityStorageController
+                <ul>
+                    <li>Entities are stored as a whole</li>
+                    <li>Easier to swap an alternate storage (Mongo...)</li>
+                </ul>
+            </li>
+            <li class="next">Base class for "generic SQL field storage"
+                <ul>
+                    <li>Per-field tables (same as D7)</li>
+                    <li>Handles revisions, translations, multi values, multi properties</li>
+                    <li class="next">... only for configurable fields</li>
+                </ul>
+            </li>
+        </ul>
+    </div></section>
+
+    <!-- Storage @todo -->
+    <section class="slide"><div>
+        <h2>Field storage <span style="font-size: .7em;">(@todo, fingers crossed)</span></h2>
+        <b>Problem</b>:
+        <ul style="margin-left: 1em">
+            <li>Supporting translatable base fields is hard</li>
+            <li>3rd party code can only add fields through config</li>
+        </ul>
+        <b>Plan</b>:
+        <ul style="margin-left: 1em">
+            <li>Let base fields control how they are stored:</li>
+            <ul>
+                <li>Optimized storage in the entity base tables</li>
+                <li>Generic storage, free translation support</li>
+                <li>Custom storage somewhere else...</li>
+            </ul>
+        </ul>
+    </div></section>
+
+    <!-- CMI -->
+    <section class="slide shout"><div>
+        <h2>CMI</h2>
+    </div></section>
+    <!-- CMI recap -->
+    <section class="slide"><div>
+        <h2>CMI</h2>
+        <ul>
+            <li>Configuration in YML files</li>
+            <li>Deployable between environments</li>
+            <li>Can be shipped in modules</li>
+            <li>ConfigEntities</li>
+        </ul>
+    </div></section>
+    <!-- Field API Definition structures -->
+    <section class="slide"><div>
+        <h2>Field definition structures</h2>
+        <ul>
+            <li><code>$field</code> : "a data bucket"<br>
+                (name, type, cardinality, entity type, ...)</li>
+            <li><code>$instance</code> : "a field attached to a specific [entity_type, bundle]"<br>
+                (label, description, required, ...)
+            </li>
+        </ul>
+        <div class="next">
+            <b>D7</b>:
+            <ul style="margin-left: 1em;">
+                <li>deep arrays of hell</li>
+                <li><code>{field_config}</code>, <code>{field_config_instance}</code> db tables</li>
+            </ul>
+        </div>
+    </div></section>
+    <!-- Tombstone -->
+    <section class="slide cover h"><div>
+        <img src="pictures/tombstone.jpg">
+    </div></section>
+    <!-- Conversion only took 18 months -->
+    <section class="slide nomargins"><div id="CMIConversion">
+        <h2>Conversion "only" took 1&frac12; year</h2>
+        <img class="border" src="pictures/badcamp_2011.png">
+        <figure>
+            <img src="pictures/cmi_commit.jpg">
+            <figcaption>FrontEnd United - London, March 2013</figcaption>
+        </figure>
+        <style>
+            #CMIConversion h2 {
+                position: absolute;
+                top: 60px;
+                left: 410px;
+            }
+            #CMIConversion img {
+                position: absolute;
+                top: 0px;
+                left: 30px;
+                -webkit-transform: scale(0.7);
+                -webkit-transform-origin: left top;
+            }
+            #CMIConversion figure {
+                position: absolute;
+                top: 170px;
+                left: 220px;
+                width: 753px;
+                height: 452px;
+            }
+                #CMIConversion figure img {
+                    margin: 0;
+                    -webkit-transform: scale(0.58);
+                    -webkit-transform-origin: left top;
+                }
+                #CMIConversion figure figcaption {
+                    position: absolute;
+                    bottom: 0;
+                    right: 0;
+                    font-size: .8em;
+                    color: #555
+                }
+        </style>
+    </div></section>
+    <section class="slide"><div>
+        <h2>D8: Field structures as ConfigEntities</h2>
+        <ul>
+            <li><code>$field</code> :</li>
+                <ul>
+                    <li><code>FieldConfig</code> (entity type: 'field_config')</li>
+                    <li>field.field.[entity_type].[field_name].yml</li>
+                </ul>
+            </li>
+            <li><code>$instance</code> :</li>
+                <ul>
+                    <li><code>FieldInstanceConfig</code> (entity type: 'field_instance_config')</li>
+                    <li>field.instance.[entity_type].[bundle].[field_name].yml</li>
+                </ul>
+            </li>
+        </ul>
+    </div></section>
+    <!-- field yml -->
+    <section class="slide nomargins codeonly"><div>
+        <h2>field.field.<span style="color: #88f">node.body</span>.php</h2>
+        <pre data-src="source/field.yaml"></pre>
+    </div></section>
+    <!-- field instance yml -->
+    <section class="slide nomargins codeonly"><div>
+        <h2>field.instance.<span style="color: #88f">node.article.body</span>.php</h2>
+        <pre data-src="source/field_instance.yaml"></pre>
+    </div></section>
+    <section class="slide"><div>
+        <figure>
+            <blockquote>
+                <p>"Don't hack core"
+                is replaced by<br>
+                "Don't hack your active config"</p>
+            </blockquote>
+            <figcaption style="margin-top: -15px;">@alexpott - Core committer and CMI maintainer</figcaption>
+        </figure>
+        <p>Edit in your staging folder, then import<br>
+            ...or use <code>drush cedit</code></p>
+    </div></section>
+    <!-- CRUD D7 -->
+    <section class="slide"><div>
+        <h2>CRUD API - D7</h2>
+        Dedicated functions:
+        <pre><code class="drupal-7">field_create_field(array());
+field_update_field(array());
+field_delete_field($field_name);
+............_instance(array());</code></pre>
+            + associated hooks...
+    </div></section>
+    <!-- CRUD D8 -->
+    <section class="slide"><div>
+        <h2>CRUD API - D8</h2>
+        Regular Entity CRUD API:
+        <pre><code class="drupal-8">$field = entity_create('field_config', array(
+  'name' => 'body',
+  'entity_type' => 'node',
+  'type' => 'text_with_summary',
+);
+$field->save();
+
+$field->cardinality = 2;
+$field->save();
+
+$field->delete();</code></pre>
+        + regular <code>hook_entity_[ENTITY_TYPE]_[OP]()</code> hooks
+    </div></section>
+
+    <!-- EntityDisplay -->
+    <section class="slide shout"><div>
+        <h2>EntityDisplay</h2>
+    </div></section>
+    <!-- Display settings in D7 -->
+    <section class="slide"><div>
+        <h2>Display settings in D7</h2>
+        Scattered around:
+        <ul>
+            <li><code>$instance['display'][$view_mode]</code></li>
+            <li>'field_bundle_settings_[entity_type]_[bundle]' variable (ew...)</li>
+            <li>3rd party (Display suite, Field groups): in their own tables...</li>
+        </ul>
+        <span class="next">Each with separate "alter" hooks</span><br>
+        <span class="next">Loads needless stuff in memory</span>
+    </div></section>
+    <!-- EntityDisplay -->
+    <section class="slide"><div>
+        <h2>EntityViewDisplay (ConfigEntity)</h2>
+        <ul>
+            <li>"Full recipe" for displaying an entity in a given view mode</li>
+            <li>Lists "components", with order and settings</li></ul>
+        <span class="next">
+            entity_view($entity, $view_mode) :
+            <ul style="margin-left: 1em">
+                <li>Loads the relevant display</li>
+                <li>Alters it as a whole<br>
+                    <pre style="margin: 0"><code>     hook_entity_view_display_alter(EntityViewDisplay $display);</code></pre></li>
+                <li>Injects it into all the callstack<br>
+                    <pre style="margin: 0"><code>     EntityViewBuilder::buildContent(array $entities, array $displays);
+hook_entity_view(EntityInterface $entity, EntityViewDisplay $display);</code></pre>
+                </li>
+            </ul>
+        </span>
+    </div></section>
+    <!-- entity display yml -->
+    <section class="slide nomargins codeonly"><div>
+        <h2>entity.display.<span style="color: #88f">node.article.teaser</span>.php</h2>
+        <pre data-src="source/entity_display.yaml"></pre>
+    </div></section>
+    <!-- EntityDisplay API -->
+    <section class="slide"><div>
+        <h2>EntityViewDisplay API</h2>
+        <pre><code>$display = entity_get_display('node', 'article', 'teaser');
+
+$display->setComponent('body', array(
+  'type' => 'text_trimmed',
+  'settings' => array('trim_length' => '600'
+))
+->removeComponent('image')
+->save();
+
+$options = $display->getComponent('body');
+// array(
+//   'type' => 'text_default'
+//   'weight' => 0,
+//   'settings' => array(),
+//   'label' => 'hidden',
+// )
+// or NULL if 'body' is hidden</code></pre>
+    </div></section>
+    <!-- EntityFormDisplay -->
+    <section class="slide"><div>
+        <h2>EntityFormDisplay</h2>
+        <ul>
+            <li>Same thing for forms :-)</li>
+            <li>Allows "form modes"</li>
+        </ul>
+    </div></section>
+
+    <!-- Formatters -->
+    <section class="slide shout"><div>
+        <h2>Formatters</h2>
+    </div></section>
+    <!-- Formatters D7 -->
+    <section class="slide"><div>
+        <h2>D7: "hooks" <span style="font-size: .7em;">(well, magic callbacks)</span></h2>
+        <pre data-src="source/formatter_d7.php"></pre>
+        <ul>
+            <li>Lost within the 50 other functions in your file</li>
+            <li><span class="monospace">switch</span> dance when you implement several formatters</li>
+        </ul>
+    </div></section>
+    <!-- FormatterInterface -->
+    <section class="slide"><div>
+        <h2>D8: FieldFormatter plugins</h2>
+        <pre data-src="source/FormatterInterface.php" class="scroll"></pre>
+        <ul>
+            <li>All logic nicely self contained.</li>
+            <li>OO! Classes! ( = Inheritance!)</li>
+            <li>FormatterBase class provides stubs and helpers</li>
+        </ul>
+    </div></section>
+    <!-- FieldFormatter plugin -->
+    <section class="slide"><div>
+        <h2>D8: FieldFormatter plugin type</h2>
+        <ul>
+            <li>No more _info() hook</li>
+            <li>Expose your class as a "Field formatter" plugin
+                <ul>
+                    <li>Discovery folder: <code>Plugin/Field/FieldFormatter</code></li>
+                    <li>Annotation: <code>FieldFormatter</code></li>
+                </ul>
+            </li>
+        </ul>
+    </div></section>
+    <!-- Number formatter -->
+    <section class="slide nomargins codeonly"><div>
+        <h2><span style="color:#bbb">/core/modules/</span>number<span style="color:#bbb">/lib/Drupal/number/</span><span style="color:#88f">Plugin/Field/FieldFormatter</span>/NumberUnformattedFormatter.php</h2>
+        <pre data-src="source/NumberUnformattedFormatter.php"></pre>
+    </div></section>
+    <!-- @FieldFormatter annotation -->
+    <section class="slide nomargins codeonly"><div>
+        <h2>/core/lib/Drupal/Core/Field/Annotation/FieldFormatter.php</h2>
+        <pre data-src="source/FieldFormatter.php"></pre>
+    </div></section>
+    <!-- Link formatter -->
+    <section class="slide nomargins codeonly"><div>
+        <h2><span style="color:#bbb">/core/modules/</span>link<span style="color:#bbb">/lib/Drupal/link/</span><span style="color:#88f">Plugin/Field/FieldFormatter</span>/LinkFormatter.php</h2>
+        <pre data-src="source/LinkFormatter.php"></pre>
+    </div></section>
+    <!-- NumberFormatter diagram -->
+    <section class="slide wide"><div>
+        <h2>Inheritance example</h2>
+        <img class="border center" src="pictures/number_formatters_diagram.png" style="-webkit-transform: scale(1.5); -webkit-transform-origin: center top;"/>
+    </div></section>
+    <!-- working in formatters -->
+    <section class="slide"><div>
+        <h2>Working in formatters</h2>
+        <ul>
+            <li>Access the configuration of the formatter:<br>
+                <code class="indent">$this->getSetting('foo'), $this->getSettings()</code></li>
+            <li class="next">Access the definition of the field:<br>
+                <code class="indent">$this->fieldDefinition->getFieldType()</code>
+                <code class="indent">$this->getFieldSetting('foo'), $this->getFieldSettings()</code></li>
+            <li class="next">Manipulate the FieldItemList and FieldItem objects:<br/>
+                <code class="indent">$items->getEntity(), $items->getLangcode()</code>
+                <p class="note">You really want to extend FormatterBase...</p></li>
+        </ul>
+    </div></section>
+
+    <!-- Widgets -->
+    <section class="slide shout"><div>
+        <h2>Widgets</h2>
+    </div></section>
+    <!-- FieldWidget plugins -->
+    <section class="slide"><div>
+        <h2>FieldWidget plugin type</h2>
+        <ul style="margin-bottom: 0">
+            <li>Discovery folder: <code>Plugin/Field/FieldWidget</code><br/></li>
+            <li>Annotation: <code>FieldWidget</code></li>
+        </ul>
+        <pre data-src="source/WidgetInterface.php" class="scroll"></pre>
+        <ul>
+            <li>WidgetBase class</li>
+        </ul>
+    </div></section>
+    <!-- Email widget-->
+    <section class="slide nomargins codeonly"><div>
+        <h2><span style="color:#bbb">/core/modules/</span>email<span style="color:#bbb">/lib/Drupal/email/</span><span style="color:#88f">Plugin/Field/FieldWidget</span>/EmailDefaultWidget.php</h2>
+        <pre data-src="source/EmailDefaultWidget.php"></pre>
+    </div></section>
+    <!-- working in widgets -->
+    <section class="slide"><div>
+        <h2>Working in widgets</h2>
+        <ul>
+            <li>Same as formatters...</li>
+            <li class="next">New in D8: <code>massageFormValues()</code><br/>
+                Values produced by the FAPI structure → proper field values</li>
+            <li class="next">FAPI / render #callbacks:<br/>
+                <del><code class="indent">$form['#process'] = '_my_process_helper';</code></del>
+                <code class="indent">$form['#process'] = array($this, 'myProcessHelper');</code>
+                <span class="next">
+                    Please use static methods instead, (avoids serializing <code>$this</code>):<br>
+                    <code class="indent">$form['#process'] = array(get_class($this), 'myProcessHelper');</code>
+                </span></li>
+        </ul>
+    </div></section>
+    <section class="slide"><div>
+        <h2>Widgets / formatters on base fields</h2>
+        <ul>
+            <li class="next">Powerful flexibility</li>
+            <li class="next">Free support for "In Place Editing"</li>
+            <li class="next">Hey, EntityDisplays let us store the settings!</li>
+        </ul>
+    </div></section>
+
+    <!-- @FieldFormatter annotation -->
+    <section class="slide nomargins codeonly"><div>
+        <h2>/core/modules/node/lib/Drupal/node/Entity/Node.php</h2>
+        <pre data-src="source/BaseFields.php"></pre>
+    </div></section>
+
+    <!-- Field types -->
+    <section class="slide shout"><div>
+        <h2>Field types</h2>
+    </div></section>
+    <!-- D7 field type hooks-->
+    <section class="slide"><div>
+        <h2>D7: field type "hooks"</h2>
+        <pre data-src="source/field_type_d7.php"></pre>
+    </div></section>
+    <!-- FieldType plugins -->
+    <section class="slide"><div id="FieldTypePlugins">
+        <h2>FieldType plugin type</h2>
+        <ul>
+            <li>Discovery folder: <code>Plugin/Field/FieldType</code></li>
+            <li>Annotation: <code>FieldType</code><br></li>
+        </ul>
+        <img class="center border" src="pictures/plugin_folder.png">
+        <ul class="next">
+            <li>Interface: <code>FieldItemInterface</code></li>
+        </ul>
+        <style>
+            #FieldTypePlugins img {
+                position: absolute;
+                right: 55px;
+                top: 155px;
+            }
+        </style>
+    </div></section>
+    <!-- FieldItemInterface -->
+    <section class="slide"><div>
+        <h2>FieldItemInterface <span style="font-size: .7em;">At some point during 8.x</span></h2>
+        <pre data-src="source/FieldItemInterface.php"></pre>
+        <pre class="next" data-src="source/ConfigFieldItemInterface.php" style="margin-top: 0px;"></pre>
+    </div></section>
+    <!-- FieldItemInterface -->
+    <section class="slide"><div>
+        <h2>FieldItemInterface <span style="font-size: .7em;">Now in 8.x !</span></h2>
+        <pre data-src="source/FieldItemInterface_2.php"></pre>
+    </div></section>
+    <!-- LinkItem-->
+    <section class="slide nomargins codeonly"><div>
+        <h2><span style="color:#bbb">/core/modules/</span>link<span style="color:#bbb">/lib/Drupal/link/</span><span style="color:#88f">Plugin/Field/FieldType</span>/LinkItem.php</h2>
+        <pre data-src="source/LinkItem.php"></pre>
+    </div></section>
+
+    <!-- Are we there yet ? -->
+    <section class="slide cover h"><div>
+        <img src="pictures/jedi-slide.jpg"/>
+    </div></section>
+
+    <section class="slide">
+        <div>
+        <h2>API changes done at Drupal Dev Days</h2>
+            <ul>
+                <li>Moved Annotation settings from field types, formatters, widgets to methods.</li>
+                <li>Removed field_attach_form().</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div>
+            <h2>Api changes / beta targets coming up (maybe during dev days)</h2>
+            <ul>
+                <li>Content translation sync settings to own storage</li>
+                <li class="next">A unified repository of field definitions</li>
+                <li class="next">Remove field_info_*()</li>
+                <li class="next">Apply formatters and widgets to * fields</li>
+                <li class="next">Make delete fields work with config synchronization</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="slide"><div>
+        <h2>Get involved</h2>
+        <ul>
+
+        <li>
+            [META] Complete the Entity Field API<br />
+            http://drupal.org/node/2095603
+            </li>
+        <li>http://entity.worldempire.ch/</li>
+        <li>Weekly IRC meetings: #drupal-entity - Thursday, 18:00 CET</li>
+        </ul>
+        </div>
+    </section>
+
+    <section class="slide shout"><div>
+        <h2>Thanks!</h2>
+    </div></section>
+    <section class="slide shout"><div>
+        <h2>Questions?</h2>
+    </div></section>
+
+    <div class="progress"><div></div></div>
+
+	<script src="shower/shower.min.js"></script>
+    <script src="prism.js"></script>
+    <script src="prism_yaml.js"></script>
+    <script>
+        var pre = document.querySelectorAll("section.codeonly pre");
+        for (var i = 0; i < pre.length; i++) {
+            pre[i].className += " line-numbers";
+        }
+    </script>
+</body>
+</html>
