@@ -13,7 +13,7 @@
 	<header class="caption">
 		<h1>D8: Fields reborn</h1>
 		<p>Pablo López - @plopesc</p>
-  </header>
+    </header>
 
     <!-- Cover -->
 	<section class="slide cover shadow h" id="Cover"><div>
@@ -22,7 +22,7 @@
         <p>Drupalcamp Spain<br>
             Valencia, May 2014
         </p>
-        <img src="pictures/cover.jpg">
+        <img src="pictures/yellow-fields-1024.jpg">
 		<style>
 			#Cover h2 {
                 color: white;
@@ -141,7 +141,7 @@
 		<h2>New field types</h2>
         <ul>
             <li>More power for site builders out of the box</li>
-            <li class="next">Slowly moving towards "Snowman"</li>
+            <!--<li class="next">Slowly moving towards "Snowman"</li>-->
             <li class="next">Not always full ports of the corresponding D7 modules</li>
             <li class="next">Sometimes they are not even modules anymore (email, number, more to come)</li>
         </ul>
@@ -485,7 +485,7 @@ $item->getFieldDefinition(), $items->getFieldDefinition()</code></pre>
         <img src="pictures/tombstone.jpg">
     </div></section>
     <!-- Conversion only took 18 months -->
-    <section class="slide nomargins"><div id="CMIConversion">
+<!--    <section class="slide nomargins"><div id="CMIConversion">
         <h2>Conversion "only" took 1&frac12; year</h2>
         <img class="border" src="pictures/badcamp_2011.png">
         <figure>
@@ -525,7 +525,7 @@ $item->getFieldDefinition(), $items->getFieldDefinition()</code></pre>
                     color: #555
                 }
         </style>
-    </div></section>
+    </div></section> -->
     <section class="slide"><div>
         <h2>D8: Field structures as ConfigEntities</h2>
         <ul>
@@ -553,7 +553,7 @@ $item->getFieldDefinition(), $items->getFieldDefinition()</code></pre>
         <h2>field.instance.<span style="color: #88f">node.article.body</span>.yml</h2>
         <pre data-src="source/field_instance.yaml"></pre>
     </div></section>
-    <section class="slide"><div>
+<!--    <section class="slide"><div>
         <figure>
             <blockquote>
                 <p>"Don't hack core"
@@ -564,7 +564,7 @@ $item->getFieldDefinition(), $items->getFieldDefinition()</code></pre>
         </figure>
         <p>Edit in your staging folder, then import<br>
             ...or use <code>drush cedit</code></p>
-    </div></section>
+    </div></section> -->
     <!-- CRUD D7 -->
     <section class="slide"><div>
         <h2>CRUD API - D7</h2>
@@ -963,7 +963,7 @@ $options = $display->getComponent('body');
             <ul>
                 <li>Content translation sync settings to own storage</li>
                 <li class="next">A unified repository of field definitions</li>
-                <li class="next"><del>Remove field_info_*()</del></li>
+                <li class="next">Remove field_info_*()</li>
                 <li class="next">Apply formatters and widgets to * fields (Partially)</li>
                 <li class="next"><del>Make delete fields work with config synchronization</del></li>
             </ul>
@@ -986,8 +986,14 @@ $options = $display->getComponent('body');
     <section class="slide shout"><div>
         <h2>Thanks!</h2>
     </div></section>
-    <section class="slide shout"><div>
+    <section class="slide shout cover" id="questions"><div>
+        <img src="pictures/orange.jpg">
         <h2>Questions?</h2>
+        <style>
+            #questions h2 {
+                margin-top: 110px;
+            }
+        </style>
     </div></section>
 
     <div class="progress"><div></div></div>

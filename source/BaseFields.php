@@ -1,4 +1,9 @@
   public static function baseFieldDefinitions(EntityTypeInterface $entity_type) {
+    $fields['nid'] = FieldDefinition::create('integer')
+      ->setLabel(t('Node ID'))
+      ->setDescription(t('The node ID.'))
+      ->setReadOnly(TRUE)
+      ->setSetting('unsigned', TRUE);
 
     $fields['title'] = FieldDefinition::create('string')
       ->setLabel(t('Title'))
@@ -20,3 +25,16 @@
         'weight' => -5,
       ))
       ->setDisplayConfigurable('form', TRUE);
+//....
+  }
+  public static function bundleFieldDefinitions(EntityTypeInterface $entity_type, $bundle, array $base_field_definitions) {
+    $node_type = node_type_load($bundle);
+    $fields = array();
+    if (isset($node_type->title_label)) {
+      $fields['title'] = clone $base_field_definitions['title'];
+      $fields['title']->setLabel($node_type->title_label);
+    }
+    return $fields;
+  }
+
+}

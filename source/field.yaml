@@ -1,1 +1,17 @@
-id: REPLACE IT
+id: node.body
+uuid: d9a197db-89e1-4b8b-b50c-122083aeacb1
+status: true
+langcode: en
+name: body
+entity_type: node
+type: text_with_summary
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: false
+indexes: {  }
+dependencies:
+  module:
+    - node
+    - text
