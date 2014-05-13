@@ -290,6 +290,117 @@
         </ul>
     </div></section>
 
+    <!-- Data struct -->
+    <section class="slide shout"><div>
+        <h2>Data structures</h2>
+        <h3>Disclaimer: still in flux...</h3>
+    </div></section>
+    <!-- Field API recap -->
+    <section class="slide"><div>
+        <h2>Data model recap</h2>
+        <ul>
+            <li>Field value: list of <b>multiple items</b></li>
+            <li>Each item: list of <b>properties</b> depending on the <b>field type</b></li>
+            <li>Fields can be <b>translatable</b><br>
+            </li></ul>
+    </div></section>
+
+    <!-- D7 structure -->
+    <section class="slide nomargins"><div>
+        <h2>Data model - D7</h2>
+        <!-- Crop: 160 60 695 xxx -->
+        <img class="center" src="./pictures/data_model_D7_0.png">
+    </div></section>
+    <!-- D7 structure - with code sample -->
+    <section class="slide nomargins"><div>
+        <h2>Data model - D7</h2>
+        <img class="center" src="./pictures/data_model_D7_1.png">
+    </div></section>
+    <!-- Entity Translation -->
+    <section class="slide"><div>
+        <h2>D8 Entity translation</h2>
+        <ul>
+            <li class="next"><b>Entity level</b>, not field level<br>
+                <code class=" language-php">$entity->getTranslation($langcode)</code></li>
+            <li class="next">Implements <b>EntityInterface</b>:<br>
+                <code class=" language-php">$entity->getTranslation($langcode)->field_foo</code></li>
+            <li class="next">Facets of the <b>same entity</b><br>
+                <code class=" language-php">$entity</code> is always loaded/saved as a whole</li>
+        </ul>
+    </div></section>
+    <!-- D8 structure -->
+    <section class="slide nomargins"><div>
+        <h2>Data model - D8</h2>
+        <!-- Crop: 150 83 713 xxx -->
+        <img class="center" src="./pictures/data_model_D8_0.png">
+    </div></section>
+    <!-- D8 structure - with code sample -->
+    <section class="slide nomargins"><div>
+        <h2>Data model - D8</h2>
+        <img class="center" src="./pictures/data_model_D8_1.png">
+    </div></section>
+    <!-- D8 structure - with translation code sample -->
+    <section class="slide nomargins"><div>
+        <h2>Data model - D8</h2>
+        <img class="center" src="./pictures/data_model_D8_1bis.png">
+    </div></section>
+    <!-- D8 structure - with classes-->
+    <section class="slide nomargins"><div>
+        <h2>Data model - D8</h2>
+        <img class="center" src="./pictures/data_model_D8_2.png">
+    </div></section>
+    <!-- D8 structure - with interfaces and code samples-->
+    <section class="slide nomargins"><div>
+        <h2>Data model - D8</h2>
+        <img class="center" src="./pictures/data_model_D8_3.png">
+    </div></section>
+    <!-- D8 structure - with interafces and short code samples-->
+    <section class="slide nomargins"><div>
+        <h2>Data model - D8</h2>
+        <img class="center" src="./pictures/data_model_D8_4.png">
+    </div></section>
+    <!-- D8 structure - with actual classes and short code samples-->
+    <section class="slide nomargins"><div>
+        <h2>Data model - D8</h2>
+        <img class="center" src="./pictures/data_model_D8_5.png">
+    </div></section>
+    <!-- D8 structure - with actual classes and associated code samples-->
+    <section class="slide nomargins"><div>
+        <h2>Data model - D8</h2>
+        <img class="center" src="./pictures/data_model_D8_6.png">
+    </div></section>
+    <!-- D8 model - takeaway -->
+    <section class="slide"><div>
+        <h2>In a nutshell</h2>
+        <ul>
+            <li><code class="language-php">$entity, $entity->getTranslation('fr')   Entity</code></li>
+            <li><code class="language-php">$entity->field_foo                       FieldItemList</code></li>
+            <li><code class="language-php">$entity->field_foo[$delta]               FieldItem</code></li>
+        </ul>
+        <ul class="next">
+            <li><code class="language-php">$entity->field_foo[$delta]->property</code></li>
+            <li><code class="language-php">$entity->field_foo->property</code> for delta 0</li>
+        </ul>
+    </div></section>
+    <!-- Navigating -->
+    <section class="slide"><div>
+        <h2>Navigating</h2>
+            <pre class=" language-php"><code class="drupal-7 language-php">$instances = field_info_instances($entity_type, $bundle);
+foreach ($instances as $field_name => $instance) {
+  $items = $entity[$field_name][$langcode];
+  do_something($items, $entity, $langcode, $instance);
+}</code></pre>
+            <pre class="next language-php"><code class="drupal-8 language-php">foreach ($entity as $field_name => $items) {
+  $items->doSomething(); // or $object->doSomething($items);
+}</code></pre>
+        <div class="next">
+            Field items are "smart":<br>
+            <code class=" language-php">    $items->getEntity()  $items->getLangcode()
+                $items->getFieldDefinition()
+            </code>
+        </div>
+    </div></section>
+
     <!-- Everything is a field -->
     <section class="slide"><div>
         <h2>Everything is a field</h2>
@@ -593,116 +704,7 @@ $field->delete();</code></pre>
         + regular <code>hook_entity_[ENTITY_TYPE]_[OP]()</code> hooks
     </div></section>
 
-    <!-- Data struct -->
-    <section class="slide shout"><div>
-        <h2>Data structures</h2>
-        <h3>Disclaimer: still in flux...</h3>
-    </div></section>
-    <!-- Field API recap -->
-    <section class="slide"><div>
-        <h2>Data model recap</h2>
-        <ul>
-            <li>Field value: list of <b>multiple items</b></li>
-            <li>Each item: list of <b>properties</b> depending on the <b>field type</b></li>
-            <li>Fields can be <b>translatable</b><br>
-            </li></ul>
-    </div></section>
 
-    <!-- D7 structure -->
-    <section class="slide nomargins"><div>
-        <h2>Data model - D7</h2>
-        <!-- Crop: 160 60 695 xxx -->
-        <img class="center" src="./pictures/data_model_D7_0.png">
-    </div></section>
-    <!-- D7 structure - with code sample -->
-    <section class="slide nomargins"><div>
-        <h2>Data model - D7</h2>
-        <img class="center" src="./pictures/data_model_D7_1.png">
-    </div></section>
-    <!-- Entity Translation -->
-    <section class="slide"><div>
-        <h2>D8 Entity translation</h2>
-        <ul>
-            <li class="next"><b>Entity level</b>, not field level<br>
-                <code class=" language-php">$entity->getTranslation($langcode)</code></li>
-            <li class="next">Implements <b>EntityInterface</b>:<br>
-                <code class=" language-php">$entity->getTranslation($langcode)->field_foo</code></li>
-            <li class="next">Facets of the <b>same entity</b><br>
-                <code class=" language-php">$entity</code> is always loaded/saved as a whole</li>
-        </ul>
-    </div></section>
-    <!-- D8 structure -->
-    <section class="slide nomargins"><div>
-        <h2>Data model - D8</h2>
-        <!-- Crop: 150 83 713 xxx -->
-        <img class="center" src="./pictures/data_model_D8_0.png">
-    </div></section>
-    <!-- D8 structure - with code sample -->
-    <section class="slide nomargins"><div>
-        <h2>Data model - D8</h2>
-        <img class="center" src="./pictures/data_model_D8_1.png">
-    </div></section>
-    <!-- D8 structure - with translation code sample -->
-    <section class="slide nomargins"><div>
-        <h2>Data model - D8</h2>
-        <img class="center" src="./pictures/data_model_D8_1bis.png">
-    </div></section>
-    <!-- D8 structure - with classes-->
-    <section class="slide nomargins"><div>
-        <h2>Data model - D8</h2>
-        <img class="center" src="./pictures/data_model_D8_2.png">
-    </div></section>
-    <!-- D8 structure - with interfaces and code samples-->
-    <section class="slide nomargins"><div>
-        <h2>Data model - D8</h2>
-        <img class="center" src="./pictures/data_model_D8_3.png">
-    </div></section>
-    <!-- D8 structure - with interafces and short code samples-->
-    <section class="slide nomargins"><div>
-        <h2>Data model - D8</h2>
-        <img class="center" src="./pictures/data_model_D8_4.png">
-    </div></section>
-    <!-- D8 structure - with actual classes and short code samples-->
-    <section class="slide nomargins"><div>
-        <h2>Data model - D8</h2>
-        <img class="center" src="./pictures/data_model_D8_5.png">
-    </div></section>
-    <!-- D8 structure - with actual classes and associated code samples-->
-    <section class="slide nomargins"><div>
-        <h2>Data model - D8</h2>
-        <img class="center" src="./pictures/data_model_D8_6.png">
-    </div></section>
-    <!-- D8 model - takeaway -->
-    <section class="slide"><div>
-        <h2>In a nutshell</h2>
-        <ul>
-            <li><code class="language-php">$entity, $entity->getTranslation('fr')   Entity</code></li>
-            <li><code class="language-php">$entity->field_foo                       FieldItemList</code></li>
-            <li><code class="language-php">$entity->field_foo[$delta]               FieldItem</code></li>
-        </ul>
-        <ul class="next">
-            <li><code class="language-php">$entity->field_foo[$delta]->property</code></li>
-            <li><code class="language-php">$entity->field_foo->property</code> for delta 0</li>
-        </ul>
-    </div></section>
-    <!-- Navigating -->
-    <section class="slide"><div>
-        <h2>Navigating</h2>
-            <pre class=" language-php"><code class="drupal-7 language-php">$instances = field_info_instances($entity_type, $bundle);
-foreach ($instances as $field_name => $instance) {
-  $items = $entity[$field_name][$langcode];
-  do_something($items, $entity, $langcode, $instance);
-}</code></pre>
-            <pre class="next language-php"><code class="drupal-8 language-php">foreach ($entity as $field_name => $items) {
-  $items->doSomething(); // or $object->doSomething($items);
-}</code></pre>
-        <div class="next">
-            Field items are "smart":<br>
-            <code class=" language-php">    $items->getEntity()  $items->getLangcode()
-                $items->getFieldDefinition()
-            </code>
-        </div>
-    </div></section>
 
     <!-- EntityDisplay -->
     <section class="slide shout"><div>
