@@ -60,28 +60,24 @@
     <section class="slide cover shadow h v shout">
       <img src="pictures/repeating.gif">
         <h2 style="color: #fff">Broken record</h2>
-        <style>
-            #SiteBuilding img {
-                filter: blur(2px);
-                -webkit-filter: blur(2px);
-                -moz-filter: blur(2px);
-                -o-filter: blur(2px);
-                -ms-filter: blur(2px);
-            }
-        </style>
     </section>
 
     <!-- Amazing changes -->
-    <section class="slide"><div>
+    <section class="slide"><div id="intro">
         <h2>Amazing changes</h2>
         <ul>
             <li>More power for the site builders</li>
-            <li class="next">Fields & instances moved to config entities</li>
-            <li class="next">Formatters, Widgets and Field types are plugins</li>
-            <li class="next">Formatters & widgets work on all fields</li>
-            <li class="next">Moved from field to entity storage</li>
-            <li class="next">Field & Entity API are now one happy big family</li>
+            <li>Fields & instances moved to config entities</li>
+            <li>Formatters, Widgets and Field types are plugins</li>
+            <li>Formatters & widgets work on all fields</li>
+            <li>Moved from field to entity storage</li>
         </ul>
+        <h2 class="next small">Field & Entity API are now one happy big family</h2>
+        <style>
+            #intro h2.small {
+                font-size: 40px;
+            }
+        </style>
     </div></section>
 
     <!-- Are we there yet ? -->
@@ -142,8 +138,8 @@
         <ul>
             <li>More power for site builders out of the box</li>
             <!--<li class="next">Slowly moving towards "Snowman"</li>-->
-            <li class="next">Not always full ports of the corresponding D7 modules</li>
-            <li class="next">Sometimes they are not even modules anymore (email, number, more to come)</li>
+            <li>Not always full ports of the corresponding D7 modules</li>
+            <li>Sometimes they are not even modules anymore (email, number, more to come)</li>
         </ul>
 	</div></section>
 
@@ -273,21 +269,6 @@
         <img src="pictures/code_2.jpg"/>
         <h2 style="color: white">APIs !!!</h2>
         <h3 style="color: #eee">There will be code</h3>
-    </div></section>
-
-    <!-- Unified APIs -->
-    <section class="slide"><div>
-        <h2>Unified APIs and features</h2>
-        <ul>
-            <li class="next">field translation</li>
-            <li class="next">field access</li>
-            <li class="next">constraints / validation</li>
-            <li class="next">output in REST</li>
-            <li class="next">widgets / formatters</li>
-            <li class="next">In Place Editing</li>
-            <li class="next">EntityQuery (EFQ in D7)</li>
-            <li class="next">field cache (= entity cache!)</li>
-        </ul>
     </div></section>
 
     <!-- Data struct -->
@@ -425,6 +406,21 @@ foreach ($instances as $field_name => $instance) {
         </div>
     </div></section>
 
+    <!-- Unified APIs -->
+    <section class="slide"><div>
+        <h2>Unified APIs and features</h2>
+        <ul class="next">
+            <li>field translation</li>
+            <li>field access</li>
+            <li>constraints / validation</li>
+            <li>output in REST</li>
+            <li>widgets / formatters</li>
+            <li>In Place Editing</li>
+            <li>EntityQuery (EFQ in D7)</li>
+            <li>field cache (= entity cache!)</li>
+        </ul>
+    </div></section>
+
     <!-- Naming is hard -->
     <section class="slide nomargins cover shadow h"><div id="NamingIsHard">
         <h2>Naming is hard...</h2>
@@ -446,19 +442,18 @@ foreach ($instances as $field_name => $instance) {
                     <li>defined in <b>code</b>: <code>MyEntityType::baseFieldDefinitions()</code></li>
                 </ul>
             </li>
-            <li><b>Bundle fields</b> (variations of base fields per bundle)
+            <li class="next"><b>Bundle fields</b> (variations of base fields per bundle)
                 <ul>
                     <li>defined in <b>code</b>: <code>MyEntityType::bundleFieldDefinitions()</code></li>
                     <li>e.g. node title</li>
                 </ul>
             </li>
-            <li><b>Configurable fields</b> (former "fields") - field.module
+            <li class="next"><b>Configurable fields</b> (former "fields") - field.module
                 <ul>
                     <li>defined in <b>config</b> through an admin UI</li>
                 </ul>
             </li>
         </ul>
-        <p><b>Properties</b>: what you find inside a FieldItem ('value', 'format', 'target_id'...)</p>
         <span class="next"><b>Properties</b>: what you find inside a FieldItem ('value', 'format', 'target_id'...)</span>
     </div></section>
     <!-- Architecture -->
