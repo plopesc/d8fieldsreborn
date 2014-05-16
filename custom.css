@@ -135,3 +135,8 @@ pre.drupal-8 code:after,
 code.drupal-8:after {
   content: "D8";
 }
+
+p.related-session {
+  width: 50%;
+  float:left;
+}
