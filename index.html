@@ -50,14 +50,14 @@
             Was earlier today :)
         </p>
         <p class="related-session">
-            <b><a href="http://2014.drupalcamp.es/modes-and-formatters">Migrate in core</a></b><br>
+            <b><a href="http://2014.drupalcamp.es/migrate-core">Migrate in core</a></b><br>
             Christian López Espínola<br>
-            -----PUT IT HERE!-----
+            Saturday 1pm
         </p>
         <p class="related-session">
-            <b><a href="http://2014.drupalcamp.es/lets-do-it-with-drupal-8">Javascript in Drupal 8</a></b><br>
+            <b><a href="http://2014.drupalcamp.es/el-universo-javascript-en-drupal-8">El universo javascript en Drupal 8</a></b><br>
             Ramón Vilar<br>
-            -----PUT IT HERE!-----
+            Saturday 5pm
         </p>
         <p class="related-session">
             <b><a href="http://2014.drupalcamp.es/modes-and-formatters">Modes and formatters</a></b><br>
@@ -261,8 +261,8 @@
                 <li>No need to clutter the field name ('comment_body')<br>
                     node 'body' != comment 'body'</li>
                 <li class="next">A $field_name alone is not enough:<br>
-                    <code class="indent">$field = field_info_field($entity_type, $name);</code><br>
-                    <code class="indent">&lt;div class="field-name-body field-node--body"></code><br>
+                    <code class="indent">$field = FieldConfig::loadByName($entity_type, $field_name);</code>    <br>
+                    <code class="indent">&lt;div class="field-name-body field-node--body"&gt;</code><br>
                 </li>
             </ul>
         </div>
@@ -966,11 +966,11 @@ $options = $display->getComponent('body');
 
     <section class="slide">
         <div>
-            <h2>Api changes / beta targets coming up</h2>
+            <h2>API changes / beta targets coming up</h2>
             <ul>
                 <li>Content translation sync settings to own storage</li>
-                <li class="next">A unified repository of field definitions</li>
-                <li class="next">Remove field_info_*()</li>
+                <li class="next"><del>A unified repository of field definitions</del></li>
+                <li class="next">Remove field_info_*() (Patch submitted)</li>
                 <li class="next">Apply formatters and widgets to * fields (Partially)</li>
                 <li class="next"><del>Make delete fields work with config synchronization</del></li>
             </ul>
